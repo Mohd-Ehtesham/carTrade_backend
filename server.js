@@ -5,15 +5,18 @@ require("dotenv").config();
 
 const app = express();
 
-const dbConnect = require("./src/utils/dbConnect");
+const dbConnect = require("./server/src/utils/dbConnect");
 
 // Import Routes
-const userRoutes = require("./src/routes/userRoute");
-const carRoutes = require("./src/routes/carRoute");
+const userRoutes = require("./server/src/routes/userRoute");
+const carRoutes = require("./server/src/routes/carRoute");
 
 app.use(cors());
 app.use(express.json());
-app.use("/images", express.static(path.join(__dirname, "../images")));
+app.use(
+  "/images",
+  express.static(path.join(__dirname, "server/public/images"))
+);
 
 dbConnect();
 
