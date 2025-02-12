@@ -1,3 +1,4 @@
+const cors = require("cors");
 const path = require("path");
 const express = require("express");
 require("dotenv").config();
@@ -10,6 +11,7 @@ const dbConnect = require("./src/utils/dbConnect");
 const userRoutes = require("./src/routes/userRoute");
 const carRoutes = require("./src/routes/carRoute");
 
+app.use(cors());
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "../images")));
 
